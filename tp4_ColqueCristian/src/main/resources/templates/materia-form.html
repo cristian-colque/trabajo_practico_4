@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Materia</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    
+    <main>
+        <h2 th:text="${materia.codigo != null} ? 'Modificar Materia' : 'Agregar Materia'"></h2>
+        <form th:action="@{/materias/agregar}" th:object="${materia}" method="post">
+            <div>
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" th:field="*{codigo}" required>
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+            </div>
+            <div>
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso" th:field="*{curso}" required>
+            </div>
+            <div>
+                <label for="cantidadHoras">Cantidad de Horas:</label>
+                <input type="number" id="cantidadHoras" name="cantidadHoras" th:field="*{cantidadHoras}" required>
+            </div>
+            <div>
+                <label for="modalidad">Modalidad:</label>
+                <input type="text" id="modalidad" name="modalidad" th:field="*{modalidad}" required>
+            </div>
+            <div>
+                <label for="docente">Docente:</label>
+                <select id="docente" name="docente" th:field="*{docente}" required>
+                    <option th:each="docente : ${docentes}" th:value="${docente.legajo}" th:text="${docente.nombre}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="carrera">Carrera:</label>
+                <select id="carrera" name="carrera" th:field="*{carrera}" required>
+                    <option th:each="carrera : ${carreras}" th:value="${carrera.codigo}" th:text="${carrera.nombre}"></option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" th:text="${materia.codigo != null} ? 'Modificar' : 'Agregar'"></button>
+            </div>
+        </form>
+    </main>
+    
+    <div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

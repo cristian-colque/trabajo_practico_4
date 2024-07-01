@@ -1,39 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Facultad - Universidad Nacional de Jujuy</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header class="bg-primary text-white text-center py-3">
-        <div class="container">
-            <img src="../static/img/logo.png" alt="Logo Facultad" class="img-fluid mb-3" style="max-width: 100px;">
-            <h1>Facultad de Ingeniería</h1>
-            <p>Innovación y Excelencia</p>
-        </div>
-    </header>
-    
-    <!-- Barra de Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">FI - UNJu</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Acerca de</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Carreras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Incluir el encabezado -->
+    <div th:replace="layouts/header :: header"></div>
     
     <!-- Contenido Principal y Barra Lateral -->
     <div class="container my-4">
@@ -69,24 +44,8 @@
         </div>
     </div>
     
-    <!-- Pie de Página -->
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>Dirección: Av. Ingeniero Baca 123, San Salvador de Jujuy, Jujuy, Argentina</p>
-            <p>Teléfono: (0388) 123-4567 | Correo: info@fi.unju.edu.ar</p>
-            <p>Síguenos en:</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#" class="text-white">LinkedIn</a></li>
-                <li class="list-inline-item"><a href="#" class="text-white">Twitter</a></li>
-                <li class="list-inline-item"><a href="#" class="text-white">Facebook</a></li>
-            </ul>
-            <p>&copy; 2024 Facultad de Ingeniería - Universidad Nacional de Jujuy. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-    
-    <!-- Scripts de Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Incluir el pie de página -->
+    <div th:replace="layouts/footer :: footer"></div>
 </body>
 </html>
+

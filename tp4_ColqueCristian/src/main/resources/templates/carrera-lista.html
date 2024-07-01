@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Carreras</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    
+    <main>
+        <h2>Listado de Carreras</h2>
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Cantidad de Años</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            <tr th:each="carrera : ${carreras}">
+                <td th:text="${carrera.codigo}"></td>
+                <td th:text="${carrera.nombre}"></td>
+                <td th:text="${carrera.cantidadAnios}"></td>
+                <td th:text="${carrera.estado}"></td>
+                <td>
+                    <a th:href="@{/carreras/modificar/{codigo}(codigo=${carrera.codigo})}">Modificar</a>
+                    <a th:href="@{/carreras/eliminar/{codigo}(codigo=${carrera.codigo})}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+        <a href="/carreras/agregar">Agregar Nueva Carrera</a>
+    </main>
+    
+    <div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

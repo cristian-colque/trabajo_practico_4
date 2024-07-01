@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Alumnos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    
+    <main>
+        <h2>Listado de Alumnos</h2>
+        <table>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Domicilio</th>
+                <th>LU</th>
+                <th>Acciones</th>
+            </tr>
+            <tr th:each="alumno : ${alumnos}">
+                <td th:text="${alumno.dni}"></td>
+                <td th:text="${alumno.nombre}"></td>
+                <td th:text="${alumno.apellido}"></td>
+                <td th:text="${alumno.email}"></td>
+                <td th:text="${alumno.telefono}"></td>
+                <td th:text="${#dates.format(alumno.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+                <td th:text="${alumno.domicilio}"></td>
+                <td th:text="${alumno.LU}"></td>
+                <td>
+                    <a th:href="@{/alumnos/modificar/{dni}(dni=${alumno.dni})}">Modificar</a>
+                    <a th:href="@{/alumnos/eliminar/{dni}(dni=${alumno.dni})}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+        <a href="/alumnos/agregar">Agregar Nuevo Alumno</a>
+    </main>
+    
+    <div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

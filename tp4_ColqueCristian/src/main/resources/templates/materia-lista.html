@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Materias</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    
+    <main>
+        <h2>Listado de Materias</h2>
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Cantidad de Horas</th>
+                <th>Modalidad</th>
+                <th>Docente</th>
+                <th>Carrera</th>
+                <th>Acciones</th>
+            </tr>
+            <tr th:each="materia : ${materias}">
+                <td th:text="${materia.codigo}"></td>
+                <td th:text="${materia.nombre}"></td>
+                <td th:text="${materia.curso}"></td>
+                <td th:text="${materia.cantidadHoras}"></td>
+                <td th:text="${materia.modalidad}"></td>
+                <td th:text="${materia.docente.nombre}"></td>
+                <td th:text="${materia.carrera.nombre}"></td>
+                <td>
+                    <a th:href="@{/materias/modificar/{codigo}(codigo=${materia.codigo})}">Modificar</a>
+                    <a th:href="@{/materias/eliminar/{codigo}(codigo=${materia.codigo})}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+        <a href="/materias/agregar">Agregar Nueva Materia</a>
+    </main>
+    
+    <div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

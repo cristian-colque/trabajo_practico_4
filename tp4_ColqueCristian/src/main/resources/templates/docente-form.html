@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Docente</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="layouts/header :: header"></div>
+    
+    <main>
+        <h2 th:text="${docente.legajo != null} ? 'Modificar Docente' : 'Agregar Docente'"></h2>
+        <form th:action="@{/docentes/agregar}" th:object="${docente}" method="post">
+            <div>
+                <label for="legajo">Legajo:</label>
+                <input type="text" id="legajo" name="legajo" th:field="*{legajo}" required>
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" th:field="*{apellido}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}" required>
+            </div>
+            <div>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" required>
+            </div>
+            <div>
+                <button type="submit" th:text="${docente.legajo != null} ? 'Modificar' : 'Agregar'"></button>
+            </div>
+        </form>
+    </main>
+    
+    <div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>
